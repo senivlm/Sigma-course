@@ -10,7 +10,7 @@ namespace Pr7
         private Dictionary<string, string> _vocabulary = new Dictionary<string, string>();
 
         public string SetVocabulary(string text)
-        {
+        {Хардкод.
             _vocabulary.Add("I", "boy");
             _vocabulary.Add("go", "run");
             _vocabulary.Add("to", "to");
@@ -26,7 +26,7 @@ namespace Pr7
             }
 
             for (var i = 0; i < words.Capacity; i++)
-            {
+            {Тут має бути цикл
                 if (_vocabulary.ContainsKey(words[i]))
                 {
                     words[i] = _vocabulary[$"{words[i]}"];
