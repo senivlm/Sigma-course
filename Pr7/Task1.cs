@@ -26,7 +26,7 @@ namespace Pr7
             }
 
             for (var i = 0; i < words.Capacity; i++)
-            {
+            { Тут має бути цикл
                 if (_vocabulary.ContainsKey(words[i]))
                 {
                     words[i] = _vocabulary[$"{words[i]}"];
