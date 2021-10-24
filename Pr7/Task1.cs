@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Linq;
 using System.Text;
 
 namespace Pr7
@@ -16,31 +17,23 @@ namespace Pr7
             _vocabulary.Add("to", "to");
             _vocabulary.Add("school", "cinema");
 
-            var convertedStr = "";
-            var sentences = text.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-            var words = new List<string>();
-
-            foreach (var t in sentences)
+            var words = text.Split(new [] { ' ', '.' }).Where(elem => !string.IsNullOrWhiteSpace(elem));
+            foreach (var t in words)
             {
-                words.AddRange(t.Split(" ", StringSplitOptions.RemoveEmptyEntries));
+                if (_vocabulary.ContainsKey(t)) 
+                    continue;
+
+                Console.WriteLine($"Enter substitute for {t}: ");
+                var newWord = Console.ReadLine();
+                _vocabulary.Add(t, newWord);
             }
 
-            for (var i = 0; i < words.Capacity; i++)
+            foreach (var pair in _vocabulary)
             {
-                if (_vocabulary.ContainsKey(words[i]))
-                {
-                    words[i] = _vocabulary[$"{words[i]}"];
-                }
-                else
-                {
-                    Console.WriteLine($"Enter substitute for {words[i]}: ");
-                    words[i] = Console.ReadLine();
-                }
-
-                convertedStr += words[i];
+                text = text.Replace(pair.Key, pair.Value);
             }
 
-            return convertedStr;
+            return text;
         }
 
     }
