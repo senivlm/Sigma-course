@@ -6,6 +6,7 @@ namespace Pr2
     class Storage
     {
         private Product[] _products;
+        порушення інкапсуляції
         public Product[] Products => _products;
         private int _maxElements { get; set; }
 
